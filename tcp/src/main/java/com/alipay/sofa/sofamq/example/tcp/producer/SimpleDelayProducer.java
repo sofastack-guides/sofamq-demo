@@ -4,12 +4,10 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import com.alipay.sofa.sofamq.client.PropertyKeyConst;
+import com.alipay.sofa.sofamq.example.tcp.AccessPoint;
 import com.alipay.sofa.sofamq.example.tcp.MqConfig;
 
 import io.openmessaging.api.Message;
-import io.openmessaging.api.MessagingAccessPoint;
-import io.openmessaging.api.OMS;
-import io.openmessaging.api.OMSBuiltinKeys;
 import io.openmessaging.api.Producer;
 import io.openmessaging.api.SendResult;
 
@@ -18,17 +16,9 @@ import io.openmessaging.api.SendResult;
  */
 public class SimpleDelayProducer {
     public static void main(String[] args) {
-        Properties credentials = new Properties();
-        credentials.setProperty(OMSBuiltinKeys.ACCESS_KEY, MqConfig.ACCESS_KEY);
-        credentials.setProperty(OMSBuiltinKeys.SECRET_KEY, MqConfig.SECRET_KEY);
-
-        MessagingAccessPoint accessPoint = OMS.builder().driver("sofamq").endpoint(MqConfig.ENDPOINT)
-            .withCredentials(credentials).build();
-
         Properties properties = new Properties();
-        properties.setProperty(PropertyKeyConst.INSTANCE_ID, MqConfig.INSTANCE);
         properties.setProperty(PropertyKeyConst.GROUP_ID, MqConfig.GROUP_ID);
-        Producer producer = accessPoint.createProducer(properties);
+        Producer producer = AccessPoint.getAccessPoint().createProducer(properties);
 
         producer.start();
 

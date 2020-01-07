@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>tcp</module>
+        <module>springboot</module>
     </modules>
 
     <dependencyManagement>
