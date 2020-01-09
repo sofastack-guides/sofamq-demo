@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import com.alipay.sofa.sofamq.client.PropertyKeyConst;
 
 @Configuration
-@ConfigurationProperties(prefix = "rocketmq")
+@ConfigurationProperties(prefix = "sofamq")
 public class MqConfig {
 
     private String accessKey;

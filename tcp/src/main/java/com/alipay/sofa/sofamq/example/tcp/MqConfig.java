@@ -14,6 +14,7 @@ public class MqConfig {
     public static final String TAG         = "mq_test_tag";
     public static final String INSTANCE    = "XXX";
     public static final String ENDPOINT    = "XXX";
+    // 阿里云用户无需设置 DATA_CENTER
     public static final String DATA_CENTER = "";
 
 }
