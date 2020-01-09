@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>sofamq-client-all</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
+            <version>3.0.0</version>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>junit</groupId>-->
