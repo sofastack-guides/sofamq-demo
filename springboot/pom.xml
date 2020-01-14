@@ -38,6 +38,13 @@
         </repository>
     </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>antcloudrelease</id>
+            <name>Ant Cloud</name>
+            <url>http://mvn.cloud.alipay.com/nexus/content/groups/open</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
