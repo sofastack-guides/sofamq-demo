@@ -1,3 +1,7 @@
+/**
+ * Alipay.com Inc.
+ * Copyright (c) 2004-2020 All Rights Reserved.
+ */
 package com.alipay.sofa.sofamq.example.tcp.producer;
 
 import java.util.Properties;
@@ -7,17 +11,13 @@ import com.alipay.sofa.sofamq.example.tcp.AccessPoint;
 import com.alipay.sofa.sofamq.example.tcp.MqConfig;
 
 import io.openmessaging.api.Message;
-import io.openmessaging.api.SendResult;
 import io.openmessaging.api.TransactionalResult;
-import io.openmessaging.api.transaction.LocalTransactionExecuter;
 import io.openmessaging.api.transaction.TransactionProducer;
-import io.openmessaging.api.transaction.TransactionStatus;
 
 /**
- * MQ 发送事务消息示例 Demo
+ * 手动两阶段事务消息 demo
  */
-public class SimpleTransactionProducer {
-
+public class TwoPhaseTransactionProducer {
     public static void main(String[] args) {
         Properties properties = new Properties();
         properties.setProperty(PropertyKeyConst.GROUP_ID, MqConfig.GROUP_ID);
@@ -27,12 +27,9 @@ public class SimpleTransactionProducer {
 
         Message message = new Message(MqConfig.TOPIC, MqConfig.TAG, "mq send transaction message test".getBytes());
 
-        SendResult sendResult = transactionProducer.send(message, new LocalTransactionExecuter() {
-            public TransactionStatus execute(Message msg, Object arg) {
-                System.out.println("执行本地事务, 并根据本地事务的状态提交TransactionStatus.");
-                return TransactionStatus.CommitTransaction;
-            }
-        }, null);
-        System.out.println("Send transaction message success.");
+        TransactionalResult result = transactionProducer.prepare(message);
+        System.out.println("send transaction message " + result);
+        System.out.println("do something...");
+        result.commit();
     }
 }

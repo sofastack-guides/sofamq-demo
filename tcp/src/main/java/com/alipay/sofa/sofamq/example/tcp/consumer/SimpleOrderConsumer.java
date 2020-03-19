@@ -30,7 +30,7 @@ public class SimpleOrderConsumer {
         consumer.start();
         System.out.println("Consumer start success.");
 
-        //等待固定时间防止进程退出
+        // 等待固定时间防止进程退出
         try {
             Thread.sleep(200000);
         } catch (InterruptedException e) {

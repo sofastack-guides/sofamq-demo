@@ -16,5 +16,4 @@ public class MqConfig {
     public static final String ENDPOINT    = "XXX";
     // 阿里云用户无需设置 DATA_CENTER
     public static final String DATA_CENTER = "";
-
 }

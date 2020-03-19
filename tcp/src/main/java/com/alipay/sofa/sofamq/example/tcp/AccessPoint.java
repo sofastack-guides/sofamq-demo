@@ -23,7 +23,7 @@ public class AccessPoint {
         ext.setProperty(PropertyKeyConst.DATA_CENTER, MqConfig.DATA_CENTER);
 
         MessagingAccessPoint accessPoint = OMS.builder().driver("sofamq").endpoint(MqConfig.ENDPOINT)
-                .withCredentials(credentials).build(ext);
+            .withCredentials(credentials).build(ext);
         return accessPoint;
     }
 

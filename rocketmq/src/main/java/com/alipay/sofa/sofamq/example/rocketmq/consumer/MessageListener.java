@@ -30,7 +30,7 @@ public class MessageListener implements MessageListenerConcurrently, MessageList
     public ConsumeOrderlyStatus consumeMessage(List<MessageExt> list, ConsumeOrderlyContext consumeOrderlyContext) {
         for (MessageExt msg : list) {
             System.out.println(
-                    String.format("%s Consume body[%s] msgId[%s]", new Date(), new String(msg.getBody()), msg.getMsgId()));
+                String.format("%s Consume body[%s] msgId[%s]", new Date(), new String(msg.getBody()), msg.getMsgId()));
         }
         return ConsumeOrderlyStatus.SUCCESS;
     }

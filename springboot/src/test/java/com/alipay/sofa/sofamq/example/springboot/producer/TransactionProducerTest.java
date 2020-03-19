@@ -28,7 +28,7 @@ public class TransactionProducerTest {
     @Test
     public void testSend() {
 
-        Message msg = new Message(mqConfig.getTopic(), "TagA", "Hello MQ".getBytes());
+        Message msg = new Message(mqConfig.getTopic(), mqConfig.getTag(), "Hello MQ".getBytes());
         SendResult sendResult = transactionProducer.send(msg, new LocalTransactionExecuter() {
             @Override
             public TransactionStatus execute(Message msg, Object arg) {
@@ -39,5 +39,4 @@ public class TransactionProducerTest {
         System.out.println(sendResult);
 
     }
-
 }
