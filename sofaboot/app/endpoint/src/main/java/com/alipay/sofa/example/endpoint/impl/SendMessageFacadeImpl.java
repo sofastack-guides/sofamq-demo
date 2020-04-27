@@ -4,6 +4,7 @@
  */
 package com.alipay.sofa.example.endpoint.impl;
 
+import com.alipay.sofa.sofamq.client.UserPropKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,8 @@ public class SendMessageFacadeImpl implements SendMessageFacade {
     @Override
     public String send() {
         Message message = new Message(mqConfig.getTopic(), mqConfig.getTag(), "hello world".getBytes());
+        // LDC 场景如果需要 RZONE 消费消息需要设置 CELL_UID
+        // message.putUserProperties(UserPropKey.CELL_UID, "XX");
         try {
             SendResult sendResult = producer.send(message);
             return sendResult.getMessageId();
