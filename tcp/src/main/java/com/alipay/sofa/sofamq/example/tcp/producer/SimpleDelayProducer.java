@@ -22,7 +22,7 @@ public class SimpleDelayProducer {
 
         producer.start();
 
-        Message message = new Message("$topic", "YOUR_TAG", "hello world".getBytes());
+        Message message = new Message(MqConfig.TOPIC, MqConfig.TAG, "hello world".getBytes());
         // 延时消息，单位毫秒（ms），在指定延迟时间（当前时间之后）进行投递，例如消息在 5 秒后投递
         message.setStartDeliverTime(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(5));
         SendResult sendResult = producer.send(message);
